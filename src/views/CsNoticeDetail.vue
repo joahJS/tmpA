@@ -1,8 +1,8 @@
 <template>
     <SubPageHero />
 
-    <section  v-if="noticeGroup.children[getId]" class="container div-main-text">
-        <div id="divSearchLine">
+    <section v-for="item in getNoticeGroup" class="container div-main-text">
+        <!-- <div id="divSearchLine">
             <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
                 <option value="cd-title">제목</option>
@@ -14,24 +14,24 @@
             <button data-search-button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
-        </div>
+        </div> -->
         <div>
             <div id="divNoticeDetail">
                 <div id="divDetailTitle"><!-- 제목영역 -->
-                    <p data-notice-detail-title>{{ noticeGroup.children[getId]?.title }}</p>
+                    <p data-notice-detail-title>{{ item.title }}</p>
                     <div id="divTitleBottom">
-                        <p data-title-date>{{ noticeGroup.children[getId]?.date }}</p>
+                        <p data-title-date>{{ item.date }}</p>
                         <p data-title-hits>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
-                            {{ noticeGroup.children[getId]?.views }}
+                            {{ item.views }}
                         </p>
                     </div>
                 </div>
                 <div id="divDetailText"><!-- 본문영역 -->
-                    <img v-if="noticeGroup.children[getId]?.images" :src="noticeGroup.children[getId]?.images" />
-                    <p v-for="subText in noticeGroup.children[getId]?.textAll">
-                        {{ subText.texts }}
-                    </p>
+                    <img v-if="item.images" :src="item.images" />
+                    <div v-html="item.textAll">
+                        
+                    </div>
                 </div>
                 <div id="divMileStone">
                     <a href="#" v-if="0 > prevArticle" ref="prevLink">
@@ -41,13 +41,15 @@
                             <p data-milestone-prev-date>-</p>
                         </div>
                     </a>
-                    <a :href="'/notice/' + (getId - 1)" v-else ref="prevLink">
+                    <router-link :to="{name: 'NoticeDetail', params: {id: prevNotice.value.bindIndex}}" v-else>
+                    
                         <div id="divMilePrev">
                             <p>이전 글</p>
-                            <p data-milestone-prev-title>{{ noticeGroup.children[getId - 1]?.title }}</p>
-                            <p data-milestone-prev-date>{{ noticeGroup.children[getId - 1]?.date }}</p>
+                            <p data-milestone-prev-title>{{ noticeGroup[getId - 1]?.title }}</p>
+                            <p data-milestone-prev-date>{{ noticeGroup[getId - 1]?.date }}</p>
                         </div>
-                    </a>
+                    
+                    </router-link>
 
                     <a href="#" v-if="dataAmount < nextArticle" ref="nextLink">
                         <div id="divMileNext">
@@ -59,8 +61,8 @@
                     <a :href="'/notice/' + (getId + 1)" v-else ref="nextLink">
                         <div id="divMileNext">
                             <p>다음 글</p>
-                            <p data-milestone-next-title>{{ currentChildren[getId + 1]?.title }}</p>
-                            <p data-milestone-next-date>{{ noticeGroup.children[getId + 1]?.date }}</p>
+                            <p data-milestone-next-title>{{ noticeGroup[getId + 1]?.title }}</p>
+                            <p data-milestone-next-date>{{ noticeGroup[getId + 1]?.date }}</p>
                         </div>
                     </a>
                     
@@ -68,9 +70,8 @@
             </div>
         </div>
 
-
         <div class="detail-btm-buttons"><!-- 목록 하단 버튼라인 -->
-            <router-link :to="noticeGroup.url">
+            <router-link :to="{name: 'Notice'}">
                 <button class="button-white">
                     <p>목 록</p>
                 </button>
@@ -91,51 +92,12 @@
     import SubPageHero from '@/components/SubPageHero.vue'
     import { useRoute } from 'vue-router'
 
-    const noticeGroup = ref({
-        url: '/notice/',
-        children: [
-            {
-                bindIndex: 0,
-                title: '소나무정보기술 본사 이전 안내',
-                date: '2022.07.15',
-                views: 91,
-                images: '/public/image/notice_02.jpg',
-                textAll: [
-                    {texts: 'Pine, thank you! 소나무정보기술입니다.'},
-                    {texts:'당사는 2022년 7월 15일자로 본사를 이전하게 되었음을 안내드립니다.'},
-                    {texts:'기존 본사 : 부산광역시 사상구 대동로 303, 부산디지털밸리 1203호'},
-                    {texts:'신규 본사 : 부산광역시 부산진구 엄광로 176, 동의대학교 산학협력관 331호'},
-                    {texts:'저희 임직원 일동은 새로운 마음가짐으로 더욱 발전하는 계기가 될 수 있도록 최선을 다하겠습니다.'},
-                    {texts:'앞으로도 많은 관심과 성원 부탁드리겠습니다.'}
-                ]
-            },
-            {
-                bindIndex: 1,
-                title: '2023년 새해가 밝았습니다.',
-                date: '2023.01.01',
-                views: 87,
-                images: '/public/image/newyear_2023.jpg',
-                textAll: [
-                    {texts: '2022년 한 해 고생많으셨습니다.'},
-                ]
-            },
-            {
-                bindIndex: 2,
-                title: '설날 연휴간 소나무정보기술 휴무안내',
-                date: '2023.01.10',
-                views: 65,
-                images: false,
-                textAll: [
-                    {texts: 'Pine, thank you! 소나무정보기술입니다.'},
-                    {texts:'다가오는 연휴에 관하여 소나무정보기술 업무일정을 안내드립니다.'},
-                    {texts:'휴무일자 : 2023.01.21 ~ 2023.01.24'},
-                    {texts:'상기 일자에는 소나무정보기술의 모든 업무가 중단되오니 일정에 참고바랍니다. 감사합니다.'}
-                ]
-            }
+    //store에서 영역별 데이터 import
+    import { useNoticeStore } from '@/stores/csNoticeSt'
+    import { storeToRefs } from 'pinia';
 
-        ]
-
-    })
+    const noticeStore = useNoticeStore()
+    const { noticeList, noticeGroup } = storeToRefs(noticeStore)
 
     const getParams = useRoute()
     const getId = parseInt(getParams.params.id)
@@ -145,17 +107,26 @@
 
     const currentArray = noticeGroup.value;
     // const nextTitle = currentArray["children"];
-    const currentChildren = currentArray['children'];
+    // const currentChildren = currentArray['children'];
 
-    const dataAmount = parseInt(currentChildren.length);
+    const dataAmount = parseInt(currentArray.length);
+
+    const getNoticeGroup = noticeGroup.value.filter(function (e) { return e.bindIndex == getId });
+
+    const prevNotice = noticeGroup.value.filter(function (e) { return e.bindIndex == getId - 1 });
+    const nextNotice = noticeGroup.value.filter(function (e) { return e.bindIndex == getId + 1 });
+
+    console.log(getNoticeGroup)
+
 
 </script>
 
 <style lang="scss" scoped>
     #divNoticeDetail {
         @apply w-full border-black border-t-2;
-    }
 
+        margin-top: 2.5rem;
+    }
 
 
 /* 본문 */
@@ -167,7 +138,7 @@
             @apply mb-2 object-cover;
         }
 
-        > p {
+        > div {
             font-size: var(--fnt-md);
             color: rgba(var(--clr-inter-shade), 1);
         }

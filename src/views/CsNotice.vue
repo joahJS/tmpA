@@ -4,14 +4,14 @@
     <section class="container div-main-text">
 
         <div id="divSearchLine">
-            <select data-totalsearch-select>
+            <!-- <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
                 <option value="cd-title">제목</option>
                 <option value="cd-day">날짜</option>
             </select>
 
-            <div class="line-vr"></div>
-            <input data-totalsearch-input type="text">
+            <div class="line-vr"></div> -->
+            <input data-totalsearch-input type="text" @input="SearchNt($event)">
             <button data-search-button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
@@ -24,7 +24,7 @@
                 <div>등록일</div>
             </div>
             <div id="divTextLines">
-                <div v-for="subitem in item.children.slice().reverse()" data-board-title-line> <!--916- 글 목록 -->
+                <div v-for="subitem in item.children.slice().reverse()" data-board-title-line class="notice-item"> <!--916- 글 목록 -->
                     <router-link :to="{name: 'NoticeDetail', params: {id: subitem.number}}"><!-- 글 한줄 시작 -->
                         <div class="table-text">
                             <div> {{ subitem.number + 1 }} </div>
@@ -71,28 +71,40 @@
 
     import SubPageHero from '@/components/SubPageHero.vue'
 
-    const noticeList = ref([
-        {
-            url: '/notice/',
-            children: [
-                {
-                    number: 0,
-                    title: '소나무정보기술 본사 이전 안내',
-                    date: '2022.07.15',
-                },
-                {
-                    number: 1,
-                    title: '2023년 새해가 밝았습니다.',
-                    date: '2023.01.01',
-                },
-                {
-                    number: 2,
-                    title: '소나무정보기술 공휴일 휴무안내',
-                    date: '2023.01.13',
-                }
-            ]
+    //store에서 영역별 데이터 import
+    import { useNoticeStore } from '@/stores/csNoticeSt'
+    import { storeToRefs } from 'pinia';
+
+    const noticeStore = useNoticeStore()
+    const { noticeList, noticeGroup } = storeToRefs(noticeStore)
+
+    
+
+    //230601 List 실시간 검색
+    async function SearchNt(e) {
+        const len = this.noticeGroup.length;   
+        // const reverseNg = noticeGroup.value.reverse();
+
+        // console.log(noticeGroup.value)
+        // console.log(Object.entries(noticeGroup).value.reverse());
+
+
+        await nextTick()
+        
+        for(let i = 0; i < len; i++) {
+
+            if (
+                this.noticeGroup[i].title.includes(e.target.value) === false &&
+                this.noticeGroup[i].textAll.includes(e.target.value) === false
+            ) {
+                document.querySelectorAll('.notice-item')[i].style.display = "none";
+            } else {
+                document.querySelectorAll('.notice-item')[i].style.display = "block";   
+            }
         }
-    ])
+    }
+
+
 
 </script>
 

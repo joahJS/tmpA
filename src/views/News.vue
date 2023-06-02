@@ -3,21 +3,21 @@
 
     <section v-for="item in newsList" class="container div-main-text">
         <div id="divSearchLine">
-            <select data-totalsearch-select>
+            <!-- <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
                 <option value="cd-title">제목</option>
                 <option value="cd-day">날짜</option>
             </select>
 
-            <div class="line-vr"></div>
-            <input data-totalsearch-input type="text">
+            <div class="line-vr"></div> -->
+            <input data-totalsearch-input type="text" @input="SearchNs($event)">
             <button data-search-button>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
         </div>
 
         <div id="divNews">
-            <div v-for="subItem in item.children.slice().reverse()">
+            <div v-for="subItem in item.children.slice().reverse()" class="news-item">
                 <router-link :to="{name: 'NewsDetail', params: {id: subItem.number}}"><!-- 반복구간 시작 -->
                     <div class="div-item">
                         <img data-item-img :src="subItem.thumImg" alt="">
@@ -75,94 +75,31 @@
 <script setup>
     import SubPageHero from '@/components/SubPageHero.vue'
 
-    const newsList = ref([
-        {
-            url: '/news/',
-            children: [
-                {
-                    number: 0,
-                    thumImg: '/public/image/news/news_04.jpg',
-                    category: '행사',
-                    title: '겨울이 다가오는 워크샵 현장에서',
-                    date: '2021.12.03',
-                    views: '120',
-                },
-                {
-                    number: 1,
-                    thumImg: '/public/image/news/2m_edu_01.jpg',
-                    category: '기타',
-                    title: '22년도 상반기 산업안전보건교육',
-                    date: '2022.02.14',
-                    views: '139',
-                },
-                {
-                    number: 2,
-                    thumImg: '/public/image/news/news_05_02.jpg',
-                    category: '회의',
-                    title: '커브길 스마트 가드레일 우수조달신청 진행을 위한 조달청 주최 컨설팅 회의',
-                    date: '2022.06.16',
-                    views: '77',
-                },
-                {
-                    number: 3,
-                    thumImg: '/public/image/news/news_02.jpg',
-                    category: '행사',
-                    title: '22년도 하반기 스마트가드레일 성과공유회 워크샵 with 동의과학대학교 산학협력단',
-                    date: '2022.07.03',
-                    views: '148',
-                },
-                {
-                    number: 4,
-                    thumImg: '/public/image/news/news_03.jpg',
-                    category: '기타',
-                    title: '22년도 산업안전보건교육',
-                    date: '2022.08.23',
-                    views: '105',
-                },
-                {
-                    number: 5,
-                    thumImg: '/public/image/news/safe_01.jpg',
-                    category: '기타',
-                    title: '[커브길 스마트 세이프 가드레일] 대한민국 안전산업박람회 참가',
-                    date: '2022.10.11',
-                    views: '141',
-                },
-                {
-                    number: 6,
-                    thumImg: '/public/image/news/news_01.jpg',
-                    category: '행사',
-                    title: '소나무정보기술 워크샵-캠프파이어가 있는 밤',
-                    date: '2022.11.04',
-                    views: '172',
-                },
-                {
-                    number: 7,
-                    thumImg: '/public/image/news/ht_07.jpg',
-                    category: '행사',
-                    title: 'ICT 융합 디바이스 기술개발사업 기술공유 워크샵',
-                    date: '2022.12.15',
-                    views: '172',
-                },
-                {
-                    number: 8,
-                    category: '행사',
-                    title: '동의대학교-(주)소나무정보기술 기술교류회',
-                    date: '2023.02.01',
-                    views: '108',
-                    thumImg: '/public/image/news/DEI/DEI_12.jpg',                    
-                },
-                
-                {
-                    number: 9,
-                    thumImg: '/public/image/news/smt_02.jpg',
-                    category: '기타',
-                    title: '2023년 중소기업 스마트서비스 지원사업 사업설명회',
-                    date: '2023.02.09',
-                    views: '117',
-                },
-            ]
+    //store에서 영역별 데이터 import
+    import { useNewsStore } from '@/stores/newsSt'
+    import { storeToRefs } from 'pinia';
+
+    const newsStore = useNewsStore()
+    const { newsList, newsGroup } = storeToRefs(newsStore)
+
+    //230602 List 실시간 검색
+    async function SearchNs(e) {
+        const len = this.newsGroup.children.length;
+
+        await nextTick()
+        
+        for(let i = 0; i < len; i++) {
+            if (
+                this.newsGroup.children[i].title.includes(e.target.value) === false &&
+                this.newsGroup.children[i].textAll.includes(e.target.value) === false
+            ) {
+                document.querySelectorAll('.news-item')[i].style.display = "none";
+            } else {
+                document.querySelectorAll('.news-item')[i].style.display = "block";   
+            }
         }
-    ])
+    }
+
 </script>
 
 <style lang="scss" scoped>
