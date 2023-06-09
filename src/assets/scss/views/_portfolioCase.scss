@@ -14,13 +14,15 @@
     @apply rounded-md relative overflow-hidden cursor-pointer;
 
     aspect-ratio: 16/9;
+    filter: drop-shadow(0 0 8px rgba(var(--clr-id-02), .1));
 }
 
 [data-portfolio-text] {
     @apply p-3 absolute bottom-0 backdrop-blur-sm w-full leading-3;
 
     color: rgb(var(--clr-inter-pane));
-    background-color: rgba(var(--clr-inter-shade), .2);
+    background-color: rgba(var(--clr-inter-shade), .5);
+    min-height: 2.3rem;
 }
 
 [data-portfolio-subTitle-tag] {

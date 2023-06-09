@@ -20,21 +20,16 @@ const routes = [
         component: () => import( /* webpackChunkName: 'Portfolio' */ '@/views/Portfolio.vue' )
     },
     {
-        path: '/portfolio/:category/:id',
-        name: 'PortfolioDetail',
-        component: () => import( /* webpackChunkName: 'PortfolioDetail' */ '@/views/PortfolioDetail.vue' )
+        path: '/Cates/:category/:id',
+        name: 'ProdDetail',
+        component: () => import( /* webpackChunkName: 'ProdDetail' */ '@/views/ProdDetail.vue' )
     },
     {
-        path: '/solutiondev',
-        name: 'SolutionDev',
-        component: () => import( /* webpackChunkName: 'SolutionDev' */ '@/views/SolutionDev.vue' )
+        path: '/Cates/:category',
+        name: 'Cates',
+        component: () => import( /* webpackChunkName: 'Cates' */ '@/views/Cates.vue' )
     },
 
-    {
-        path: '/sitedev',
-        name: 'SiteDev',
-        component: () => import( /* webpackChunkName: 'SiteDev' */ '@/views/SiteDev.vue' )
-    },
     {
         path: '/map',
         name: 'Map',

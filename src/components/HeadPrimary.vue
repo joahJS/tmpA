@@ -42,9 +42,16 @@
                             <span>{{ navItem.navText }}</span>
                         </router-link>
 
-                        <ul v-if="navItem.childrens" class="sub-list">
+                        <ul v-if="navItem.navText != '사업분야'" class="sub-list">
                             <li v-for="subItem in navItem.childrens" class="sub-item">
                                 <router-link :to="subItem.subTo" class="nav-link-method">
+                                    <span>{{ subItem.subName }}</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                        <ul v-else class="sub-list">
+                            <li v-for="subItem in navItem.childrens" class="sub-item">
+                                <router-link :to="{ name: 'Cates', params: { category: subItem.category } }" class="nav-link-method">
                                     <span>{{ subItem.subName }}</span>
                                 </router-link>
                             </li>
@@ -75,10 +82,10 @@
             linkTo: '/solutiondev',
             navText: '사업분야',
             childrens: [
-                { subTo: '/solutiondev', subName: '솔루션 개발' },
-                { subTo: '/sitedev', subName: '기업 사이트 구축' },
-                { subTo: '/portfolio', subName: '구축사례' },
-                { subTo: '/scs', subName: 'Smart Cutting' }
+                { subTo: '/Cates', subName: '보도용', category: 'sidewalk' },
+                { subTo: '/Cates', subName: '기타', category: 'etc' },
+                // { subTo: '/ProdDetail', subName: '구축사례' },
+                // { subTo: '/scs', subName: 'Smart Cutting' }
             ]
         },
         {
