@@ -38,6 +38,12 @@ export const useCateStore = defineStore('cate', () => {
             name: '스팟 워싱블록(인조 화강블록)',
             subname: '간결하면서도 도시적이고 세련된 이미지',
             thumImg: '/public/image/prod/thumImg/block_sample01.jpg',
+            detailImg: '/public/image/prod/samhwa1.jpg',
+            exImg: [
+                { example: '/public/image/prod/thumImg/block_sample01.jpg' },
+                { example: '/public/image/prod/thumImg/block_sample01.jpg' },
+                { example: '/public/image/prod/thumImg/block_sample01.jpg' },
+            ],
             tag:'도시적인', 
             sumText: `
                 <p>다양한 천연골재로 성형한 후 물과 에어로 워싱 처리</p>
@@ -52,6 +58,7 @@ export const useCateStore = defineStore('cate', () => {
             name: 'U형 블록',
             serviceText: '결합식으로 뒤틀림이 없으며, 강도가 높고 시공이 간단함',
             thumImg: '/public/image/prod/thumImg/block_sample02.jpg',
+            detailImg: '/public/image/prod/samhwa2.jpg',
             tag:'안정적인',
             sumText: `
                 <p>결합식 인터록킹 블록으로 제작되어 포장면의 뒤틀림이 없음</p>
@@ -67,6 +74,7 @@ export const useCateStore = defineStore('cate', () => {
             name: '잔디 블록',
             serviceText: '취급이 용이하며 잔디번식에 유리함',
             thumImg: '/public/image/prod/thumImg/block_sample03.jpg',
+            detailImg: '/public/image/prod/samhwa3.jpg',
             tag:'잔디 식생이 유리한',
             sumText: `
                 <p>시공이 뛰어나고 취급이 용이</p>
@@ -83,6 +91,7 @@ export const useCateStore = defineStore('cate', () => {
             name: '조경 경계블록',
             serviceText: '곡선을 만들 수 있으며 저렴한 가격이 특징',
             thumImg: '/public/image/prod/thumImg/block_sample04.jpg',
+            detailImg: '/public/image/prod/samhwa4.jpg',
             tag:'다목적 경계용',
             sumText: `
                 <p>곡선을 만들 수 있고 가격이 저렴함</p>

@@ -1,7 +1,7 @@
 <template>
     <SubPageHero />
 
-    <div class="container mt-20 mx-auto">
+    <div class="detail-container mt-20 mx-auto">
         <section v-for="item in cateGroup.filter((c) => c.category === getCate)">
             <div v-if="item.prodNumber == tmpId" id="portfolio-detail-box">
                 
@@ -17,7 +17,7 @@
                         <article class="service-text skill-text-list">
                             <p>{{ item.category }}</p>
                             <h3 data-prod-name>{{ item.name }}</h3>
-                            <span>서비스 설명</span>
+                            <span>특징</span>
                             <div data-prod-subtexts v-html="item.sumText"></div>
                         </article>
                         <article class="funtion-text skill-text-list">
@@ -28,6 +28,21 @@
                 </div>
 
                 <div class="Pdetail-second-box">
+                    <h4 class=" Pdetail-title">상세정보</h4>
+                    <img data-prod-detail-img :src="item.detailImg" alt="">
+                    <div class="Pdetail-demand-list">
+                        
+                        <article class="Pdetail-demand-box" v-for=" demandTitle in item.demand">
+                            <span class="dot"></span>
+                            <div class="Pdetail-demand-text" >
+                                <strong>{{demandTitle.Title }}</strong>
+                                <p class="demand-explain" >{{demandTitle.Text}}</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- <div class="Pdetail-second-box">
                     <h4 class=" Pdetail-title">요구사항</h4>
                     <div class="Pdetail-demand-list">
                         <article class="Pdetail-demand-box" v-for=" demandTitle in item.demand">
@@ -52,20 +67,12 @@
                             <p v-for="tobe in item.toBe">{{ tobe.text }}</p>
                         </article>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="Pdetail-last-box">
-                    <h4 class="Pdetail-title"> UI 화면</h4>
-                    <div class="Pdetail-ui-list">
-                        <article class="Pdetail-ui-imgBox">
-                            <!-- <div class="ui-left-img">
-                                <img :src="pageId().leftImg" />
-                            </div> -->
-                            <div class="ui-right-img">
-                                <img :src="item.leftImg" />
-                                <img v-for="rImg in item.rightImg" :src="rImg.img" />
-                            </div>
-                        </article>
+                    <h4 class="Pdetail-title"> 구축사례</h4>
+                    <div class="ui-right-img">    
+                        <img v-for="imgItem in item.exImg" :src="imgItem.example" alt="">
                     </div>
                 </div>
 
@@ -106,6 +113,11 @@
 <style lang="scss">
     /** PortfolioDetail.css*/
 
+    .detail-container {
+        max-width: 1024px;
+        
+    }
+
     [data-prod-img-box] {
         @apply w-full;
     }
@@ -123,7 +135,7 @@
     }
 
     .Pdetail-company-img {
-        @apply rounded-md w-full;
+        @apply rounded-md w-full h-full;
 
         aspect-ratio: 16/9;
 
@@ -132,7 +144,7 @@
     .Pdetail-first-box {
         @apply grid gap-10;
 
-        grid-template-columns: 1fr .6fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .Pdetail-skill-text {
@@ -226,30 +238,43 @@
     }
 
 
-    .Pdetail-ui-imgBox {
-        @apply grid gap-1;
-
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    [data-prod-detail-img] {
+        width: 100%;
+        max-width: 1024px;
+        margin: 0 auto;
     }
 
-    .ui-left-img {
-        > img {
-            @apply rounded-sm object-contain;
-        }
-    }
+    // .ui-left-img {
+    //     > img {
+    //         @apply rounded-sm object-contain;
+    //     }
+    // }
 
     .ui-right-img {
         @apply grid gap-1;
 
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
 
         > img {
             @apply rounded-sm object-contain;
+
+            &:hover {
+                transform: scale(1.05);
+                transition: .5s;
+            }
         }
+
     }
     
     .p-button-white{
         @apply py-1.5 px-6 mt-10;
+    }
+
+    .portfolio-img:hover {
+        img {
+            transform: scale(1.1);
+        }
     }
 
     /*portfolioDetail 반응형*/
