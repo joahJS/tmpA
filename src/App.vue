@@ -11,7 +11,7 @@
 
     <aside id="floatButtons">
         <button type="button" id="btnRemote">
-            <a href="/public/client.exe">
+            <a href="/assets/client.exe">
                 <i class="ri-customer-service-line"></i>
             </a>
         </button>

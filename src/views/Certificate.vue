@@ -4,30 +4,14 @@
     <div class="container mt-20 mx-auto">
         <section id="certificate-box">
             <div class="certificate-img-list" >
-                <article>
-                    <img src="@/assets/images/program.png" >
-                    <p class="certificate-label">프로그램 등록증</p>
+                <article v-for="item in certGroup">
+                    <img :src="item.img" @click="item.isView = !item.isView" alt="인증서 썸네일 이미지">
+                    <p class="certificate-label">{{ item.title }}</p>
+                    <div v-if="item.isView == true" data-cert-modal>
+                        <img :src="item.img" alt="인증서 자세히보기" @click="item.isView = !item.isView">
+                    </div>
                 </article>
-                <article>
-                    <img src="@/assets/images/gs.png" >
-                    <p class="certificate-label">GS인증 소프트웨어 품질인증서 </p>
-                </article>
-                <article>
-                    <img src="@/assets/images/iso.png" >
-                    <p class="certificate-label">ISO 9001:2015 인증서</p>
-                </article>
-                <article>
-                    <img src="@/assets/images/kc.png" >
-                    <p class="certificate-label">KC인증 충격센서 전자파인증</p>
-                </article>
-                <article>
-                    <img src="@/assets/images/sw.png" >
-                    <p class="certificate-label">SW직접생산확인증명서</p>
-                </article>
-                <article>
-                    <img src="@/assets/images/rsch.png" >
-                    <p class="certificate-label">기업부설연구소 인정서</p>
-                </article>
+ 
             </div>
         </section> <!--certificate-box-->
     </div>
@@ -35,20 +19,29 @@
 
 <script setup>
     import SubPageHero from '@/components/SubPageHero.vue'
+
+    //store에서 영역별 데이터 import
+    import { useCertStore } from '@/stores/certSt'
+    import { storeToRefs } from 'pinia';
+
+    const certStore = useCertStore()
+    const { certGroup } = storeToRefs(certStore)
+
+    const showMod = ref(false)
+
 </script> <!-- Logic Ends -->
 
 <style lang="scss">
-    #certificate-box {
-
-    }
 
     .certificate-img-list {
-        @apply grid gap-4 pr-2;
+        @apply grid pr-2;
 
+        gap: 2rem 1rem;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         
-        > article {
+        img {
             filter: drop-shadow(0 0 8px rgba(var(--clr-text), .2));
+            cursor: pointer;
         }
 
         @media screen and (max-width: 1024px) {
@@ -76,6 +69,29 @@
 
             font-size: var(--fnt-md);
             height: 2.5rem;
+        }
+    }
+
+    [data-cert-modal] {
+        @apply fixed;
+
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(var(--clr-inter-shade), .5);
+        z-index: 9;
+        
+        img {
+            @apply absolute;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            padding: 1rem;
         }
     }
 </style> <!-- Stylesheet Ends -->

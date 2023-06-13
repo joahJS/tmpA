@@ -3,8 +3,8 @@
         <div class="container flex justify-between items-center px-2 h-full">
             <h1 id="mainLogo">
                 <router-link to="/">
-                    <img v-if="isThisMobile" src="/src/assets/images/logo-mobile.svg" alt="" data-main-logo>
-                    <img v-else src="/src/assets/images/logo.svg" alt="" data-main-logo>
+                    <img v-if="isThisMobile" src="/assets/images/logo-mobile.svg" alt="" data-main-logo>
+                    <img v-else src="/assets/images/logo.svg" alt="" data-main-logo>
                 </router-link>
             </h1>
 

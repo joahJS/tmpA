@@ -6,7 +6,7 @@
     font-family: 'SUIT';
     src:
         local('SUIT Variable'),
-        url('@/assets/fonts/SUIT-Variable.woff2') format('woff2-variations');
+        url('/assets/fonts/SUIT-Variable.woff2') format('woff2-variations');
 	font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -16,7 +16,7 @@
     font-family: 'NS-Neo';
     src:
         local('NanumSquareNeo Variable'),
-        url('@/assets/fonts/NanumSquareNeo-Variable.woff2') format('woff2-variations');
+        url('/assets/fonts/NanumSquareNeo-Variable.woff2') format('woff2-variations');
 	font-weight: 100 900;
     font-style: normal;
     font-display: swap;

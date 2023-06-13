@@ -11,7 +11,7 @@
             </div>
 
             <video class="hero-video" autoplay loop muted playsinline>
-                <source src="/src/assets/misc/main-fhd.mp4" type="video/mp4">
+                <source src="/assets/misc/main-fhd.mp4" type="video/mp4">
             </video>
         </section>
 
@@ -41,7 +41,7 @@
             </dl>
 
                 <div class="portfolio-picture">
-                    <img src="/src/assets/images/main-category-mes.jpg" alt="" data-pf-category-image>
+                    <img src="/assets/images/main-category-mes.jpg" alt="" data-pf-category-image>
                 </div>
             </article> <!-- 사업분야 아이템 -->
 
@@ -62,7 +62,7 @@
             </dl>
 
                 <div class="portfolio-picture">
-                    <img src="/src/assets/images/main-category-erp.jpg" alt="" data-pf-category-image>
+                    <img src="/assets/images/main-category-erp.jpg" alt="" data-pf-category-image>
                 </div>
             </article> <!-- 사업분야 아이템 -->
 
@@ -83,7 +83,7 @@
             </dl>
 
                 <div class="portfolio-picture">
-                    <img src="/src/assets/images/main-category-web.jpg" alt="" data-pf-category-image>
+                    <img src="/assets/images/main-category-web.jpg" alt="" data-pf-category-image>
                 </div>
             </article> <!-- 사업분야 아이템 -->
         </section>
@@ -128,7 +128,7 @@
 
             <div class="intro-background-image">
                 <video class="w-full h-full" autoplay loop muted playsinline style="transform: rotateY(180deg)">
-                    <source src="/src/assets/misc/office.mp4" type="video/mp4">
+                    <source src="/assets/misc/office.mp4" type="video/mp4">
 
                     <img src="" alt="" class="w-full h-full" data-intro-background-image>
                 </video>
@@ -282,28 +282,28 @@
     const reportGroup = ref([
         {
             number: '1',
-            thumImg: '/public/image/report/report_01.png',
+            thumImg: '/assets/image/report/report_01.png',
             site: '환경일보',
             title: "부산시, ICT융합 디바이스 개발' 공모 선정... 지능형 교통시스템 초석",
             date: '2021.05.21',
         },
         {
             number: '2',
-            thumImg: '/public/image/report/report_02.jpg',
+            thumImg: '/assets/image/report/report_02.jpg',
             site: '전자신문',
             title: "소나무정보기술, IoT기반 '스마트 세이프 가드레일 시스템' 개발",
             date: '2021.12.30',
         },
         {
             number: '3',
-            thumImg: '/public/image/report/report_03.jpg',
+            thumImg: '/assets/image/report/report_03.jpg',
             site: '부산일보',
             title: '대학·기업 손잡고 부산 선도산업 SW전문인재 키운다',
             date: '2022.06.08',
         },
         {
             number: '4',
-            thumImg: '/public/image/report/report_04.png',
+            thumImg: '/assets/image/report/report_04.png',
             site: '전자신문',
             title: "소나무정보기술 '커브길 스마트 세이프 가드레일 시스템' 현장 실증",
             date: '2022.12.29',
@@ -313,7 +313,7 @@
     const newsGroup = ref([
         {
             number: '1',
-            thumImg: '/public/image/news/news_01.jpg',
+            thumImg: '/assets/image/news/news_01.jpg',
             category: '행사',
             title: '22년도 1분기 워크샵-캠프파이어가 있는 밤',
             date: '2022.03.20',
@@ -321,7 +321,7 @@
         },
         {
             number: '2',
-            thumImg: '/public/image/news/news_02.jpg',
+            thumImg: '/assets/image/news/news_02.jpg',
             category: '행사',
             title: '22년도 하반기 스마트가드레일 성과공유회 워크샵 with 동의과학대학교 산학협력단',
             date: '2022.07.03',
@@ -329,7 +329,7 @@
         },
         {
             number: '3',
-            thumImg: '/public/image/news/news_03.jpg',
+            thumImg: '/assets/image/news/news_03.jpg',
             category: '기타',
             title: '22년도 산업안전보건교육',
             date: '2022.08.17',
@@ -341,7 +341,7 @@
             title: '[3분기 워크샵]늦여름밤이 저물어가는 워크샵 현장에서',
             date: '2022.08.28',
             views: '120',
-            thumImg: '/public/image/news/news_04.jpg',
+            thumImg: '/assets/image/news/news_04.jpg',
         },
         {
             number: '5',
@@ -349,7 +349,7 @@
             title: '커브길 스마트 가드레일 우수조달신청 진행을 위한 조달청 주최 컨설팅 회의',
             date: '2022.10.16',
             views: '77',
-            thumImg: '/public/image/news/news_05_02.jpg',
+            thumImg: '/assets/image/news/news_05_02.jpg',
         }
     ])
 </script> <!-- Logic Ends -->

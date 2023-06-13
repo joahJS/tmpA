@@ -10,7 +10,7 @@
     <footer id="footPrimary">
         <div class="flex gap-20 container mx-auto">
             <h1 id="footLogo">
-                <img src="/src/assets/images/logo.svg" alt="" data-foot-logo>
+                <img src="/assets/images/logo.svg" alt="" data-foot-logo>
             </h1>
 
             <div id="footTexts">
@@ -90,7 +90,7 @@
         @apply relative mt-36 py-24;
 
         background-color: rgb(var(--clr-inter-pane));
-        background-image: url('@/assets/images/contact.jpg');
+        background-image: url('/assets/images/contact.jpg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;

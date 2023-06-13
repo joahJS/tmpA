@@ -83,7 +83,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 175,
             texts: '고객용 원격지원 설치파일 다운로드',
             uploaded: [
-                {fileName:'/public/client.exe', name:'고객용 원격지원 설치파일.exe'}
+                {fileName:'/assets/client.exe', name:'고객용 원격지원 설치파일.exe'}
             ],
             password: null,
             lock: false,
@@ -96,7 +96,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 6,
             texts: '더블스윗 APK파일을 업로드하오니 업무에 활용바랍니다.',
             uploaded: [
-                {fileName:'/public/더블스윗_v1.01.apk', name:'더블스윗_v1.01.apk'},
+                {fileName:'/assets/더블스윗_v1.01.apk', name:'더블스윗_v1.01.apk'},
             ],
             password: 'db',
             lock: true,
@@ -109,7 +109,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 7,
             texts: '영인하이텍 APK파일을 업로드하오니 업무에 활용바랍니다.',
             uploaded: [
-                {fileName:'/public/영인하이텍.apk', name:'영인하이텍.apk'},
+                {fileName:'/assets/영인하이텍.apk', name:'영인하이텍.apk'},
             ],
             password: 'yi',
             lock: true,
@@ -122,7 +122,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 3,
             texts: 'SNC APK파일을 업로드하오니 업무에 활용바랍니다.',
             uploaded: [
-                {fileName:'/public/SNC.apk', name:'SNC.apk'},
+                {fileName:'/assets/SNC.apk', name:'SNC.apk'},
             ],
             password: 'sn',
             lock: true,
@@ -135,8 +135,8 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 7,
             texts: '한동산업 APK파일 및 설치매뉴얼을 업로드하오니 업무에 활용바랍니다.',
             uploaded: [
-                {fileName:'/public/한동산업.apk', name:'한동산업.apk'},
-                {fileName:'/public/한동산업_APK_설치_매뉴얼_230419.pdf', name:'한동산업_APK_설치_매뉴얼_230419.pdf'},
+                {fileName:'/assets/한동산업.apk', name:'한동산업.apk'},
+                {fileName:'/assets/한동산업_APK_설치_매뉴얼_230419.pdf', name:'한동산업_APK_설치_매뉴얼_230419.pdf'},
             ],
             password: 'ha',
             lock: true,
@@ -149,7 +149,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 6,
             texts: '금강에스엠 APK파일을 업로드하오니 업무에 활용바랍니다.',
             uploaded: [
-                {fileName:'/public/금강에스엠.apk', name:'금강에스엠.apk'},
+                {fileName:'/assets/금강에스엠.apk', name:'금강에스엠.apk'},
             ],
             password: 'gg',
             lock: true,
@@ -162,7 +162,7 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
             views: 4,
             texts: '현대스틸 APK파일을 업로드하오니 업무에 활용바랍니다.',
             uploaded: [
-                {fileName:'/public/현대스틸.apk', name:'현대스틸.apk'},
+                {fileName:'/assets/현대스틸.apk', name:'현대스틸.apk'},
             ],
             password: 'hs',
             lock: true,

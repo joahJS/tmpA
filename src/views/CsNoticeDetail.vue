@@ -33,15 +33,19 @@
                         
                     </div>
                 </div>
+
+                <!-- 이전글 / 다음글 -->
                 <div id="divMileStone">
-                    <a href="#" v-if="0 > prevArticle" ref="prevLink">
+                    <router-link to="#" v-if="0 > prevArticle || isNaN(prevArticle)">
+                    <!-- <a href="#" v-if="0 > prevArticle || isNaN(prevArticle)"> -->
                         <div id="divMilePrev">
                             <p>이전 글</p>
                             <p data-milestone-prev-title>이전 글이 없습니다.</p>
                             <p data-milestone-prev-date>-</p>
                         </div>
-                    </a>
-                    <router-link :to="{name: 'NoticeDetail', params: {id: prevNotice.value.bindIndex}}" v-else>
+                    <!-- </a> -->
+                    </router-link>
+                    <router-link :to="{name: 'NoticeDetail', params: {id: prevArticle}}" v-else>
                     
                         <div id="divMilePrev">
                             <p>이전 글</p>
@@ -51,20 +55,25 @@
                     
                     </router-link>
 
-                    <a href="#" v-if="dataAmount < nextArticle" ref="nextLink">
+                    <router-link to="#" v-if="maxIndex < nextArticle || isNaN(nextArticle)">
+                    <!-- <a href="#" v-if="maxIndex < nextArticle || isNaN(nextArticle)"> -->
                         <div id="divMileNext">
                             <p>다음 글</p>
                             <p data-milestone-next-title>다음 글이 없습니다.</p>
                             <p data-milestone-next-date>-</p>
                         </div>
-                    </a>
-                    <a :href="'/notice/' + (getId + 1)" v-else ref="nextLink">
+                    <!-- </a> -->
+                    </router-link>
+
+                    <router-link :to="{name: 'NoticeDetail', params: {id: nextArticle}}" v-else>
+                    
                         <div id="divMileNext">
                             <p>다음 글</p>
                             <p data-milestone-next-title>{{ noticeGroup[getId + 1]?.title }}</p>
                             <p data-milestone-next-date>{{ noticeGroup[getId + 1]?.date }}</p>
                         </div>
-                    </a>
+                    
+                    </router-link>
                     
                 </div>
             </div>
@@ -97,26 +106,33 @@
     import { storeToRefs } from 'pinia';
 
     const noticeStore = useNoticeStore()
-    const { noticeList, noticeGroup } = storeToRefs(noticeStore)
+    const { noticeGroup } = storeToRefs(noticeStore)
+
+    //json의 객체배열을 배열로 가져오기
+    let noticeData = Object.entries(noticeGroup.value)
+    
 
     const getParams = useRoute()
     const getId = parseInt(getParams.params.id)
+
+    const maxIndex = parseInt(noticeGroup.value.length);
+
+    // 현재 글의 index = bindIndex(글 목록 번호 = 0부터)
+    const thisIndex = noticeGroup.value.findIndex((f) => f.bindIndex == getId)
+
+    // 이전글, 다음글 ID
+    const prevArticle = parseInt(noticeGroup.value[thisIndex - 1]?.bindIndex);
+    const nextArticle = parseInt(noticeGroup.value[thisIndex + 1]?.bindIndex);
+
+    console.log(nextArticle)
     
-    const nextArticle = parseInt(getId + 2);
-    const prevArticle = parseInt(getId - 1);
-
-    const currentArray = noticeGroup.value;
-    // const nextTitle = currentArray["children"];
-    // const currentChildren = currentArray['children'];
-
-    const dataAmount = parseInt(currentArray.length);
-
     const getNoticeGroup = noticeGroup.value.filter(function (e) { return e.bindIndex == getId });
+    
 
-    const prevNotice = noticeGroup.value.filter(function (e) { return e.bindIndex == getId - 1 });
-    const nextNotice = noticeGroup.value.filter(function (e) { return e.bindIndex == getId + 1 });
+    // const prevNotice = noticeGroup.value.filter(function (e) { return e.bindIndex == getId - 1 });
+    // const nextNotice = noticeGroup.value.filter(function (e) { return e.bindIndex == getId + 1 });
 
-    console.log(getNoticeGroup)
+    
 
 
 </script>

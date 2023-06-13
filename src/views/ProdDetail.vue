@@ -132,6 +132,7 @@
         @apply font-bold mb-3 pt-1 pb-6;
 
         font-family: 'NS-Neo', sans-serif;
+        color: rgba(var(--clr-text), 1);
     }
 
     .Pdetail-company-img {

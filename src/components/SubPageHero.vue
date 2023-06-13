@@ -19,7 +19,7 @@
         @apply relative w-full flex items-end bg-cover;
 
         height: 30vh;
-        background-image: url('@/assets/images/subHeroBack.png');
+        background-image: url('/assets/images/subHeroBack.png');
         background-position: center;
     }
 

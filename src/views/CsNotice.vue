@@ -11,29 +11,39 @@
             </select>
 
             <div class="line-vr"></div> -->
-            <input data-totalsearch-input type="text" @input="SearchNt($event)">
-            <button data-search-button>
+            <input data-totalsearch-input class="total-search-input" type="text" @keyup.enter="SearchNt()">
+            <button data-search-button @click="SearchNt()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
 
         </div>
-        <div v-for="item in noticeList" id="divNotice">
+        <div id="divNotice">
             <div class="table-title">
                 <div>번호</div>
                 <div>제목</div>
                 <div>등록일</div>
             </div>
             <div id="divTextLines">
-                <div v-for="subitem in item.children.slice().reverse()" data-board-title-line class="notice-item"> <!--916- 글 목록 -->
-                    <router-link :to="{name: 'NoticeDetail', params: {id: subitem.number}}"><!-- 글 한줄 시작 -->
+                <div v-for="item in noticeGroup.slice().reverse()" data-board-title-line class="notice-item" :key="item.bindIndex"> <!--916- 글 목록 -->
+                    <router-link :to="{name: 'NoticeDetail', params: {id: item.bindIndex}}"><!-- 글 한줄 시작 -->
                         <div class="table-text">
-                            <div> {{ subitem.number + 1 }} </div>
-                            <div class="board-titles-div">{{ subitem.title }}</div>
-                            <div> {{ subitem.date }} </div>
+                            <div> {{ item.bindIndex + 1 }} </div>
+                            <div class="board-titles-div">{{ item.title }}</div>
+                            <div> {{ item.date }} </div>
                         </div>
                     </router-link><!-- 글 한줄 끝 -->
                 
                 </div>
+            </div>
+
+            <div class="rst" v-for="item in resultList">
+                <router-link :to="{name: 'NoticeDetail', params: {id: item.bindIndex}}"><!-- 글 한줄 시작 -->
+                    <div class="table-text">
+                        <div> {{ item.bindIndex + 1 }} </div>
+                        <div class="board-titles-div">{{ item.title }}</div>
+                        <div> {{ item.date }} </div>
+                    </div>
+                </router-link>
             </div>
 
         </div>
@@ -78,32 +88,30 @@
     const noticeStore = useNoticeStore()
     const { noticeList, noticeGroup } = storeToRefs(noticeStore)
 
-    
+    //json의 객체배열을 배열로 가져오기
+    let noticeData = Object.entries(noticeGroup.value)
 
-    //230601 List 실시간 검색
+   
+   
+    //검색기능 23.06.13
+    const resultList = ref()
+
     async function SearchNt(e) {
-        const len = this.noticeGroup.length;   
-        // const reverseNg = noticeGroup.value.reverse();
-
-        // console.log(noticeGroup.value)
-        // console.log(Object.entries(noticeGroup).value.reverse());
-
-
+        //nextTick 아래 스크립트는 DOM update 후 실행 > querySelector 등 사용 가능
         await nextTick()
-        
-        for(let i = 0; i < len; i++) {
 
-            if (
-                this.noticeGroup[i].title.includes(e.target.value) === false &&
-                this.noticeGroup[i].textAll.includes(e.target.value) === false
-            ) {
-                document.querySelectorAll('.notice-item')[i].style.display = "none";
-            } else {
-                document.querySelectorAll('.notice-item')[i].style.display = "block";   
-            }
+        const srchValue = document.querySelector('.total-search-input').value;
+        const allWr = document.getElementById('divTextLines');
+
+        //검색어가 Null이 아니면 기존 게시글 display: none;
+        if ( srchValue != null ) {
+            resultList.value = noticeGroup.value.filter((f) => f.title.toString().includes(srchValue) || f.textAll.toString().includes(srchValue))
+            allWr.style.display = 'none';
+        } else {
+            allWr.style.display = 'block';
         }
-    }
 
+    }
 
 
 </script>

@@ -9,7 +9,7 @@
                         <span>{{ item.title }}</span>
                         <h3 class="font-bold pb-6 pt-1">{{ item.titleEn }}</h3>
                     </div>
-                    <img src="@/assets/images/main-category-web.jpg" class="solution-in-img"/>
+                    <img src="/assets/images/main-category-web.jpg" class="solution-in-img"/>
                 </article>
                 <article class="basis-3/6">
                     <span class="D-title">{{ item.title }}</span>

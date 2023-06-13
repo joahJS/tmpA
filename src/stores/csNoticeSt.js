@@ -37,7 +37,7 @@ export const useNoticeStore = defineStore('notice', () => {
             title: '소나무정보기술 본사 이전 안내',
             date: '2022.07.15',
             views: 91,
-            images: '/public/image/notice_02.jpg',
+            images: '/assets/image/notice_02.jpg',
             textAll: `
                 <p>Pine, thank you! 소나무정보기술입니다.</p>
                 <p>당사는 2022년 7월 15일자로 본사를 이전하게 되었음을 안내드립니다.</p>
@@ -52,7 +52,7 @@ export const useNoticeStore = defineStore('notice', () => {
             title: '2023년 새해가 밝았습니다.',
             date: '2023.01.01',
             views: 87,
-            images: '/public/image/newyear_2023.jpg',
+            images: '/assets/image/newyear_2023.jpg',
             textAll: `
                 <p>2022년 한해도 고생많으셨습니다.</p>
             `

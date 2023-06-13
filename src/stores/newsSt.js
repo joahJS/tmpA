@@ -12,7 +12,7 @@ export const useNewsStore = defineStore('news', () => {
             children: [
                 {
                     number: 0,
-                    thumImg: '/public/image/news/news_04.jpg',
+                    thumImg: '/assets/image/news/news_04.jpg',
                     category: '행사',
                     title: '겨울이 다가오는 워크샵 현장에서',
                     date: '2021.12.03',
@@ -20,7 +20,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 1,
-                    thumImg: '/public/image/news/2m_edu_01.jpg',
+                    thumImg: '/assets/image/news/2m_edu_01.jpg',
                     category: '기타',
                     title: '22년도 상반기 산업안전보건교육',
                     date: '2022.02.14',
@@ -28,7 +28,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 2,
-                    thumImg: '/public/image/news/news_05_02.jpg',
+                    thumImg: '/assets/image/news/news_05_02.jpg',
                     category: '회의',
                     title: '커브길 스마트 가드레일 우수조달신청 진행을 위한 조달청 주최 컨설팅 회의',
                     date: '2022.06.16',
@@ -36,7 +36,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 3,
-                    thumImg: '/public/image/news/news_02.jpg',
+                    thumImg: '/assets/image/news/news_02.jpg',
                     category: '행사',
                     title: '22년도 하반기 스마트가드레일 성과공유회 워크샵 with 동의과학대학교 산학협력단',
                     date: '2022.07.03',
@@ -44,7 +44,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 4,
-                    thumImg: '/public/image/news/news_03.jpg',
+                    thumImg: '/assets/image/news/news_03.jpg',
                     category: '기타',
                     title: '22년도 산업안전보건교육',
                     date: '2022.08.23',
@@ -52,7 +52,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 5,
-                    thumImg: '/public/image/news/safe_01.jpg',
+                    thumImg: '/assets/image/news/safe_01.jpg',
                     category: '기타',
                     title: '[커브길 스마트 세이프 가드레일] 대한민국 안전산업박람회 참가',
                     date: '2022.10.11',
@@ -60,7 +60,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 6,
-                    thumImg: '/public/image/news/news_01.jpg',
+                    thumImg: '/assets/image/news/news_01.jpg',
                     category: '행사',
                     title: '소나무정보기술 워크샵-캠프파이어가 있는 밤',
                     date: '2022.11.04',
@@ -68,7 +68,7 @@ export const useNewsStore = defineStore('news', () => {
                 },
                 {
                     number: 7,
-                    thumImg: '/public/image/news/ht_07.jpg',
+                    thumImg: '/assets/image/news/ht_07.jpg',
                     category: '행사',
                     title: 'ICT 융합 디바이스 기술개발사업 기술공유 워크샵',
                     date: '2022.12.15',
@@ -80,12 +80,12 @@ export const useNewsStore = defineStore('news', () => {
                     title: '동의대학교-(주)소나무정보기술 기술교류회',
                     date: '2023.02.01',
                     views: '108',
-                    thumImg: '/public/image/news/DEI/DEI_12.jpg',                    
+                    thumImg: '/assets/image/news/DEI/DEI_12.jpg',                    
                 },
                 
                 {
                     number: 9,
-                    thumImg: '/public/image/news/smt_02.jpg',
+                    thumImg: '/assets/image/news/smt_02.jpg',
                     category: '기타',
                     title: '2023년 중소기업 스마트서비스 지원사업 사업설명회',
                     date: '2023.02.09',
@@ -107,8 +107,8 @@ export const useNewsStore = defineStore('news', () => {
                 date: '2021.12.03',
                 views: '120',
                 imgAll: [
-                    {img: '/public/image/news/news_04.jpg'},
-                    {img: '/public/image/news/news_04_01.jpg'}
+                    {img: '/assets/image/news/news_04.jpg'},
+                    {img: '/assets/image/news/news_04_01.jpg'}
                 ],
                 textAll: `
                     <p>21년도 워크샵이 진행되었습니다.</p>
@@ -117,14 +117,14 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 1,
-                thumImg: '/public/image/news/2m_edu_01.jpg',
+                thumImg: '/assets/image/news/2m_edu_01.jpg',
                 category: '기타',
                 title: '22년도 상반기 산업안전보건교육',
                 date: '2022.02.14',
                 views: '139',
                 imgAll: [
-                    {img: '/public/image/news/2m_edu_01.jpg'},
-                    {img: '/public/image/news/2m_edu_02.jpg'}
+                    {img: '/assets/image/news/2m_edu_01.jpg'},
+                    {img: '/assets/image/news/2m_edu_02.jpg'}
                 ],
                 textAll: `
                     <p>의무안전교육인 산업안전보건교육이 실시되었습니다.</p>
@@ -138,8 +138,8 @@ export const useNewsStore = defineStore('news', () => {
                 date: '2022.06.16',
                 views: '77',
                 imgAll: [
-                    {img: '/public/image/news/news_05_02.jpg'},
-                    {img: '/public/image/news/news_05_01.jpg'},
+                    {img: '/assets/image/news/news_05_02.jpg'},
+                    {img: '/assets/image/news/news_05_01.jpg'},
                 ],
                 textAll: `
                     <p>22년도 4차 우수조달신청 전 서울에서 개최된 컨설팅 회의가 진행되었습니다.</p>
@@ -148,13 +148,13 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 3,
-                thumImg: '/public/image/news/news_02.jpg',
+                thumImg: '/assets/image/news/news_02.jpg',
                 category: '행사',
                 title: '22년도 하반기 스마트가드레일 성과공유회 워크샵 with 동의과학대학교 산학협력단',
                 date: '2022.07.03',
                 views: '148',
                 imgAll: [
-                    {img: '/public/image/news/news_02.jpg'},
+                    {img: '/assets/image/news/news_02.jpg'},
                 ],
                 textAll: `
                     <p>22년도 하반기 ICT융합디바이스개발사업 스마트가드레일의 성과공유회가 진행되었습니다.</p>
@@ -163,14 +163,14 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 4,
-                thumImg: '/public/image/news/news_03.jpg',
+                thumImg: '/assets/image/news/news_03.jpg',
                 category: '기타',
                 title: '22년도 산업안전보건교육',
                 date: '2022.08.23',
                 views: '105',
                 imgAll: [
-                    {img: '/public/image/news/news_03.jpg'},
-                    {img: '/public/image/news/news_03_02.jpg'}
+                    {img: '/assets/image/news/news_03.jpg'},
+                    {img: '/assets/image/news/news_03_02.jpg'}
                 ],
                 textAll: `
                     <p>금년도 하반기 산업안전보건교육이 진행되었습니다.</p>
@@ -179,15 +179,15 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 5,
-                thumImg: '/public/image/news/safe_01.jpg',
+                thumImg: '/assets/image/news/safe_01.jpg',
                 category: '기타',
                 title: '[커브길 스마트 세이프 가드레일] 대한민국 안전산업박람회 참가',
                 date: '2022.10.11',
                 views: '141',
                 imgAll: [
-                    {img: '/public/image/news/safe_01.jpg'},
-                    {img: '/public/image/news/safe_02.jpg'},
-                    {img: '/public/image/news/safe_03.jpg'}
+                    {img: '/assets/image/news/safe_01.jpg'},
+                    {img: '/assets/image/news/safe_02.jpg'},
+                    {img: '/assets/image/news/safe_03.jpg'}
                 ],
                 textAll: `
                     <p>행정안전부, 산업통상자원부 주최 하에 10월 12일 ~ 10월 14일 3일간 EXCO에서 한국안전산업박람회가 진행되었습니다.</p>
@@ -196,18 +196,18 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 6,
-                thumImg: '/public/image/news/news_01.jpg',
+                thumImg: '/assets/image/news/news_01.jpg',
                 category: '행사',
                 title: '소나무정보기술 워크샵-캠프파이어가 있는 밤',
                 date: '2022.11.04',
                 views: '172',
                 imgAll: [
-                    {img: '/public/image/news/news_01.jpg'},
-                    {img: '/public/image/news/news_01_01.jpg'},
-                    {img: '/public/image/news/news_01_02.jpg'},
-                    {img: '/public/image/news/news_01_03.jpg'},
-                    {img: '/public/image/news/news_01_04.jpg'},
-                    {img: '/public/image/news/news_01_05.jpg'},
+                    {img: '/assets/image/news/news_01.jpg'},
+                    {img: '/assets/image/news/news_01_01.jpg'},
+                    {img: '/assets/image/news/news_01_02.jpg'},
+                    {img: '/assets/image/news/news_01_03.jpg'},
+                    {img: '/assets/image/news/news_01_04.jpg'},
+                    {img: '/assets/image/news/news_01_05.jpg'},
                 ],
                 textAll: `
                     <p>22년도 소나무정보기술 워크샵이 진행되었습니다.</p>
@@ -216,19 +216,19 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 7,
-                thumImg: '/public/image/news/news_07.jpg',
+                thumImg: '/assets/image/news/news_07.jpg',
                 category: '행사',
                 title: 'ICT 융합 디바이스 기술개발사업 기술공유 워크샵',
                 date: '2022.12.15',
                 views: '172',
                 imgAll: [
-                    {img: '/public/image/news/ht_01.jpg'},
-                    {img: '/public/image/news/ht_02.jpg'},
-                    {img: '/public/image/news/ht_03.jpg'},
-                    {img: '/public/image/news/ht_04.jpg'},
-                    {img: '/public/image/news/ht_05.jpg'},
-                    {img: '/public/image/news/ht_06.jpg'},
-                    {img: '/public/image/news/ht_07.jpg'}
+                    {img: '/assets/image/news/ht_01.jpg'},
+                    {img: '/assets/image/news/ht_02.jpg'},
+                    {img: '/assets/image/news/ht_03.jpg'},
+                    {img: '/assets/image/news/ht_04.jpg'},
+                    {img: '/assets/image/news/ht_05.jpg'},
+                    {img: '/assets/image/news/ht_06.jpg'},
+                    {img: '/assets/image/news/ht_07.jpg'}
                 ],
                 textAll: `
                     <p>2021-2022년간 진행되어온 커브길 스마트 세이프 가드레일 시스템 마무리를 앞두고 기술공유 워크샵이 진행되었습니다.</p>
@@ -240,20 +240,20 @@ export const useNewsStore = defineStore('news', () => {
                 title: '동의대학교-(주)소나무정보기술 기술교류회',
                 date: '2023.02.01',
                 views: '108',
-                thumImg: '/public/image/news/DEI/DEI_12.jpg',
+                thumImg: '/assets/image/news/DEI/DEI_12.jpg',
                 imgAll: [
-                    {img: '/public/image/news/DEI/DEI_01.jpg'},
-                    {img: '/public/image/news/DEI/DEI_02.jpg'},
-                    {img: '/public/image/news/DEI/DEI_03.jpg'},
-                    {img: '/public/image/news/DEI/DEI_04.jpg'},
-                    {img: '/public/image/news/DEI/DEI_05.jpg'},
-                    {img: '/public/image/news/DEI/DEI_06.jpg'},
-                    {img: '/public/image/news/DEI/DEI_07.jpg'},
-                    {img: '/public/image/news/DEI/DEI_08.jpg'},
-                    {img: '/public/image/news/DEI/DEI_09.jpg'},
-                    {img: '/public/image/news/DEI/DEI_10.jpg'},
-                    {img: '/public/image/news/DEI/DEI_11.jpg'},
-                    {img: '/public/image/news/DEI/DEI_12.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_01.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_02.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_03.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_04.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_05.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_06.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_07.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_08.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_09.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_10.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_11.jpg'},
+                    {img: '/assets/image/news/DEI/DEI_12.jpg'},
                 ],
                 textAll: `
                     <p>동의대학교 산학협력단-주식회사 소나무정보기술 간의 기술교류회가 진행되었습니다.</p>
@@ -263,15 +263,15 @@ export const useNewsStore = defineStore('news', () => {
             
             {
                 number: 9,
-                thumImg: '/public/image/news/smt_02.jpg',
+                thumImg: '/assets/image/news/smt_02.jpg',
                 category: '기타',
                 title: '2023년 중소기업 스마트서비스 지원사업 사업설명회',
                 date: '2023.02.09',
                 views: '117',
                 imgAll: [
-                    {img: '/public/image/news/smt_01.jpg'},
-                    {img: '/public/image/news/smt_02.jpg'},
-                    {img: '/public/image/news/smt_03.jpg'}
+                    {img: '/assets/image/news/smt_01.jpg'},
+                    {img: '/assets/image/news/smt_02.jpg'},
+                    {img: '/assets/image/news/smt_03.jpg'}
                 ],
                 textAll: `
                     <p>한국경영혁신중소기업협회 주관 하에 중소기업 스마트서비스 지원사업의 사업설명회가 진행되었습니다.</p>

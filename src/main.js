@@ -10,7 +10,7 @@ import { createMachine } from 'xstate'
 // Else
 import 'vue-global-api'
 import 'remixicon/fonts/remixicon.css'
-import './assets/scss/style.css'
+import '/public/assets/scss/style.css'
 
 // Initializing
 const pinia = createPinia()
