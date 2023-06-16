@@ -97,7 +97,7 @@
     import { storeToRefs } from 'pinia';
 
     const reportStore = useReportStore()
-    const { reportList, reportGroup } = storeToRefs(reportStore)
+    const { reportGroup } = storeToRefs(reportStore)
 
     const getParams = useRoute()
     const getId = parseInt(getParams.params.id)

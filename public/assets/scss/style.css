@@ -1017,9 +1017,11 @@ input[type=text]:focus {
 #divDetailText > p {
   @apply leading-5;
 }
+
 #divDetailText img {
   max-width: 50%;
   height: inherit;
+  width: 100%;
 }
 
 .swiper-slide {

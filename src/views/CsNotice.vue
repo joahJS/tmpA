@@ -23,6 +23,8 @@
                 <div>제목</div>
                 <div>등록일</div>
             </div>
+
+            <!-- 모든 게시글 -->
             <div id="divTextLines">
                 <div v-for="item in noticeGroup.slice().reverse()" data-board-title-line class="notice-item" :key="item.bindIndex"> <!--916- 글 목록 -->
                     <router-link :to="{name: 'NoticeDetail', params: {id: item.bindIndex}}"><!-- 글 한줄 시작 -->
@@ -36,6 +38,7 @@
                 </div>
             </div>
 
+            <!-- 검색결과 -->
             <div class="rst" v-for="item in resultList">
                 <router-link :to="{name: 'NoticeDetail', params: {id: item.bindIndex}}"><!-- 글 한줄 시작 -->
                     <div class="table-text">
@@ -104,6 +107,7 @@
         const allWr = document.getElementById('divTextLines');
 
         //검색어가 Null이 아니면 기존 게시글 display: none;
+        //filter는 원본배열을 건드리지 않고 복사본을 반환함
         if ( srchValue != null ) {
             resultList.value = noticeGroup.value.filter((f) => f.title.toString().includes(srchValue) || f.textAll.toString().includes(srchValue))
             allWr.style.display = 'none';

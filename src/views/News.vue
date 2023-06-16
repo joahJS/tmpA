@@ -1,7 +1,7 @@
 <template>
     <SubPageHero />
 
-    <section v-for="item in newsList" class="container div-main-text">
+    <section class="container div-main-text">
         <div id="divSearchLine">
             <!-- <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
@@ -17,7 +17,7 @@
         </div>
 
         <div id="divNews">
-            <div v-for="subItem in item.children.slice().reverse()" class="news-item">
+            <div v-for="subItem in newsGroup.children" class="news-item">
                 <router-link :to="{name: 'NewsDetail', params: {id: subItem.number}}"><!-- 반복구간 시작 -->
                     <div class="div-item">
                         <img data-item-img :src="subItem.thumImg" alt="">
@@ -80,25 +80,7 @@
     import { storeToRefs } from 'pinia';
 
     const newsStore = useNewsStore()
-    const { newsList, newsGroup } = storeToRefs(newsStore)
-
-    //230602 List 실시간 검색
-    async function SearchNs(e) {
-        const len = this.newsGroup.children.length;
-
-        await nextTick()
-        
-        for(let i = 0; i < len; i++) {
-            if (
-                this.newsGroup.children[i].title.includes(e.target.value) === false &&
-                this.newsGroup.children[i].textAll.includes(e.target.value) === false
-            ) {
-                document.querySelectorAll('.news-item')[i].style.display = "none";
-            } else {
-                document.querySelectorAll('.news-item')[i].style.display = "block";   
-            }
-        }
-    }
+    const { newsGroup } = storeToRefs(newsStore)
 
 </script>
 

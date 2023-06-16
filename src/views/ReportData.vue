@@ -1,7 +1,7 @@
 <template>
     <SubPageHero />
 
-    <section v-for="item in reportList" class="container div-main-text">
+    <section class="container div-main-text">
         <div id="divSearchLine">
             <select data-totalsearch-select>
                 <option value="cd-total">전체</option>
@@ -16,7 +16,7 @@
             </button>
         </div>
         <div id="divReportData">
-            <router-link v-for="subItem in item.children.slice().reverse()" :to="{name: 'ReportDetail', params: {id: subItem.number}}"><!-- 반복구간 시작 -->
+            <router-link v-for="subItem in reportGroup.slice().reverse()" :to="{name: 'ReportDetail', params: {id: subItem.number}}"><!-- 반복구간 시작 -->
                 <div class="div-item">
                     <img data-item-img :src="subItem.thumImg" alt="">
                     <ul>
@@ -77,7 +77,7 @@
     import { storeToRefs } from 'pinia';
 
     const reportStore = useReportStore()
-    const { reportList, reportGroup } = storeToRefs(reportStore)
+    const { reportGroup } = storeToRefs(reportStore)
 
     
 </script>

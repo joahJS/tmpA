@@ -4,97 +4,6 @@ import { defineStore } from 'pinia'
 
 export const useNewsStore = defineStore('news', () => {
 
-    // 목록
-
-    const newsList = ref([
-        {
-            url: '/news/',
-            children: [
-                {
-                    number: 0,
-                    thumImg: '/assets/image/news/news_04.jpg',
-                    category: '행사',
-                    title: '겨울이 다가오는 워크샵 현장에서',
-                    date: '2021.12.03',
-                    views: '120',
-                },
-                {
-                    number: 1,
-                    thumImg: '/assets/image/news/2m_edu_01.jpg',
-                    category: '기타',
-                    title: '22년도 상반기 산업안전보건교육',
-                    date: '2022.02.14',
-                    views: '139',
-                },
-                {
-                    number: 2,
-                    thumImg: '/assets/image/news/news_05_02.jpg',
-                    category: '회의',
-                    title: '커브길 스마트 가드레일 우수조달신청 진행을 위한 조달청 주최 컨설팅 회의',
-                    date: '2022.06.16',
-                    views: '77',
-                },
-                {
-                    number: 3,
-                    thumImg: '/assets/image/news/news_02.jpg',
-                    category: '행사',
-                    title: '22년도 하반기 스마트가드레일 성과공유회 워크샵 with 동의과학대학교 산학협력단',
-                    date: '2022.07.03',
-                    views: '148',
-                },
-                {
-                    number: 4,
-                    thumImg: '/assets/image/news/news_03.jpg',
-                    category: '기타',
-                    title: '22년도 산업안전보건교육',
-                    date: '2022.08.23',
-                    views: '105',
-                },
-                {
-                    number: 5,
-                    thumImg: '/assets/image/news/safe_01.jpg',
-                    category: '기타',
-                    title: '[커브길 스마트 세이프 가드레일] 대한민국 안전산업박람회 참가',
-                    date: '2022.10.11',
-                    views: '141',
-                },
-                {
-                    number: 6,
-                    thumImg: '/assets/image/news/news_01.jpg',
-                    category: '행사',
-                    title: '소나무정보기술 워크샵-캠프파이어가 있는 밤',
-                    date: '2022.11.04',
-                    views: '172',
-                },
-                {
-                    number: 7,
-                    thumImg: '/assets/image/news/ht_07.jpg',
-                    category: '행사',
-                    title: 'ICT 융합 디바이스 기술개발사업 기술공유 워크샵',
-                    date: '2022.12.15',
-                    views: '172',
-                },
-                {
-                    number: 8,
-                    category: '행사',
-                    title: '동의대학교-(주)소나무정보기술 기술교류회',
-                    date: '2023.02.01',
-                    views: '108',
-                    thumImg: '/assets/image/news/DEI/DEI_12.jpg',                    
-                },
-                
-                {
-                    number: 9,
-                    thumImg: '/assets/image/news/smt_02.jpg',
-                    category: '기타',
-                    title: '2023년 중소기업 스마트서비스 지원사업 사업설명회',
-                    date: '2023.02.09',
-                    views: '117',
-                },
-            ]
-        }
-    ])  
-
     //상세페이지
 
     const newsGroup = ref({
@@ -102,6 +11,7 @@ export const useNewsStore = defineStore('news', () => {
         children: [
             {
                 number: 0,
+                thumImg: '/assets/image/news/news_04.jpg',
                 category: '행사',
                 title: '겨울이 다가오는 워크샵 현장에서',
                 date: '2021.12.03',
@@ -133,6 +43,7 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 2,
+                thumImg: '/assets/image/news/news_05_02.jpg',
                 category: '회의',
                 title: '커브길 스마트 가드레일 우수조달신청 진행을 위한 조달청 주최 컨설팅 회의',
                 date: '2022.06.16',
@@ -216,7 +127,7 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 7,
-                thumImg: '/assets/image/news/news_07.jpg',
+                thumImg: '/assets/image/news/ht_07.jpg',
                 category: '행사',
                 title: 'ICT 융합 디바이스 기술개발사업 기술공유 워크샵',
                 date: '2022.12.15',
@@ -236,11 +147,11 @@ export const useNewsStore = defineStore('news', () => {
             },
             {
                 number: 8,
+                thumImg: '/assets/image/news/DEI/DEI_12.jpg',
                 category: '행사',
                 title: '동의대학교-(주)소나무정보기술 기술교류회',
                 date: '2023.02.01',
                 views: '108',
-                thumImg: '/assets/image/news/DEI/DEI_12.jpg',
                 imgAll: [
                     {img: '/assets/image/news/DEI/DEI_01.jpg'},
                     {img: '/assets/image/news/DEI/DEI_02.jpg'},
@@ -285,6 +196,6 @@ export const useNewsStore = defineStore('news', () => {
     })
 
 
-    return { newsList, newsGroup }
+    return { newsGroup }
 })
 
