@@ -89,7 +89,7 @@
     import { storeToRefs } from 'pinia';
 
     const noticeStore = useNoticeStore()
-    const { noticeList, noticeGroup } = storeToRefs(noticeStore)
+    const { noticeGroup } = storeToRefs(noticeStore)
 
     //json의 객체배열을 배열로 가져오기
     let noticeData = Object.entries(noticeGroup.value)
@@ -109,7 +109,7 @@
         //검색어가 Null이 아니면 기존 게시글 display: none;
         //filter는 원본배열을 건드리지 않고 복사본을 반환함
         if ( srchValue != null ) {
-            resultList.value = noticeGroup.value.filter((f) => f.title.toString().includes(srchValue) || f.textAll.toString().includes(srchValue))
+            resultList.value = noticeGroup.value.filter((f) => f.title.toString().toUpperCase().includes(srchValue) || f.textAll.toString().toUpperCase().includes(srchValue))
             allWr.style.display = 'none';
         } else {
             allWr.style.display = 'block';

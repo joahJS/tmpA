@@ -4,74 +4,6 @@ import { defineStore } from 'pinia'
 
 export const useDataRoomStore = defineStore('dataRoom', () => {
 
-    // 목록
-
-    const listPreview = ref([
-        {
-            url: '/dataroom/',
-            children: [
-                
-                {
-                    number: 0,
-                    title:'고객용 원격지원 설치파일 다운로드',
-                    date:'2022.11.12',
-                    password: null,
-                    lock: false,
-                    modals: false
-                },
-                {
-                    number: 1,
-                    title:'더블스윗 APK파일 다운로드',
-                    date:'2023.05.08',
-                    password: '2',
-                    lock: true,
-                    modals: false
-                },
-                {
-                    number: 2,
-                    title:'영인하이텍 APK파일 다운로드',
-                    date:'2023.05.09',
-                    password: '3',
-                    lock: true,
-                    modals: false
-                },
-                {
-                    number: 3,
-                    title:'SNC APK파일 다운로드',
-                    date:'2023.04.13',
-                    password: '4',
-                    lock: true,
-                    modals: false
-                },
-                {
-                    number: 4,
-                    title:'한동산업 APK파일 다운로드',
-                    date:'2023.05.09',
-                    password: '5',
-                    lock: true,
-                    modals: false
-                },
-                {
-                    number: 5,
-                    title:'금강에스엠 APK파일 다운로드',
-                    date:'2023.05.25',
-                    password: '5',
-                    lock: true,
-                    modals: false
-                },
-                {
-                    number: 6,
-                    title:'현대스틸 APK파일 다운로드',
-                    date:'2023.06.01',
-                    password: '6',
-                    lock: true,
-                    modals: false
-                },
-            ]
-
-        },
-    ])
-
     //상세페이지
 
     const dataGroup = ref([
@@ -171,6 +103,6 @@ export const useDataRoomStore = defineStore('dataRoom', () => {
     ])
 
 
-    return { listPreview, dataGroup }
+    return { dataGroup }
 })
 

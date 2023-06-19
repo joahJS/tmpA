@@ -11,8 +11,8 @@
             </select> -->
 
             <!-- <div class="line-vr"></div> -->
-            <input data-totalsearch-input type="text" @input="SearchDr($event)">
-            <button data-search-button>
+            <input class="total-search-input" type="text" @keyup.enter="SearchDt()">
+            <button data-search-button @click="SearchDt()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"/></svg>
             </button>
 
@@ -24,21 +24,37 @@
                 <div>등록일</div>
             </div>
 
-            <div v-for="(item, index) in listPreview.slice().reverse()" id="divTextLines" :key="index">
-                <div v-for="subitem in item.children" data-board-title-line class="dataroom-item">
+            <!-- 모든 게시글 -->
+            <div id="divTextLines">
+                <div v-for="subItem in dataGroup.slice().reverse()"  data-board-title-line class="dataroom-item">
                     
-                    <router-link :to="{name: 'DataRoomDetail', params: {id: subitem.number}}">
+                    <router-link :to="{name: 'DataRoomDetail', params: {id: subItem.bindIndex}}">
                         <div class="table-text">
-                            <div>{{ subitem.number + 1 }}</div>
-                            <div class="board-titles-div">{{ subitem.title }}</div>
-                            <div>{{ subitem.date }}</div>
+                            <div>{{ subItem.bindIndex + 1 }}</div>
+                            <div class="board-titles-div">{{ subItem.title }}</div>
+                            <div>{{ subItem.date }}</div>
+                        </div>
+                    </router-link>
+                                
+                </div>
+            </div>
+
+            <!-- 검색결과 -->
+            
+                <div class="rst dataroom-item" v-for="subItem in resultList"  data-board-title-line>
+                    
+                    <router-link :to="{name: 'DataRoomDetail', params: {id: subItem.bindIndex}}">
+                        <div class="table-text">
+                            <div>{{ subItem.bindIndex + 1 }}</div>
+                            <div class="board-titles-div">{{ subItem.title }}</div>
+                            <div>{{ subItem.date }}</div>
                         </div>
                     </router-link>
                                 
                 </div>
             </div>
             
-        </div>
+   
         
         <div class="list-btm-buttons"><!-- 목록 하단 버튼라인 -->
             <!-- <router-link to="/dataroom/wr">
@@ -80,24 +96,28 @@
     import { storeToRefs } from 'pinia';
 
     const dataRoomStore = useDataRoomStore()
-    const { listPreview, dataGroup } = storeToRefs(dataRoomStore)
+    const { dataGroup } = storeToRefs(dataRoomStore)
 
-    //230601 List 실시간 검색
-    async function SearchDr(e) {
-        const len = this.dataGroup.length;
 
+    //검색
+    const resultList = ref()
+
+    async function SearchDt() {
+        //nextTick 아래 스크립트는 DOM update 후 실행 > querySelector 등 사용 가능
         await nextTick()
-        
-        for(let i = 0; i < len; i++) {
-            if (
-                this.dataGroup[i].title.includes(e.target.value) === false &&
-                this.dataGroup[i].texts.includes(e.target.value) === false
-            ) {
-                document.querySelectorAll('.dataroom-item')[i].style.display = "none";
-            } else {
-                document.querySelectorAll('.dataroom-item')[i].style.display = "block";   
-            }
+
+        const srchValue = document.querySelector(".total-search-input").value;
+        const allWr = document.getElementById("divTextLines");
+
+        //검색어가 Null이 아니면 기존 게시글 display: none;
+        //filter는 원본배열을 건드리지 않고 복사본을 반환함
+        if ( srchValue != null ) {
+            resultList.value = dataGroup.value.filter((f) => f.title.toString().toUpperCase().includes(srchValue.toUpperCase()) || f.texts.toString().toUpperCase().includes(srchValue.toUpperCase()))
+            allWr.style.display = 'none';
+        } else {
+            allWr.style.display = 'block';
         }
+        
     }
 
 
